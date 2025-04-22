@@ -79,7 +79,3 @@ def bible_quiz():
 bible_quiz()
 
         
-
-
-
-
