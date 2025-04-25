@@ -1,5 +1,6 @@
 [
     {
+        "No": 1,
         "question": "Who was the first king of Israel",
         "options": [
             "(A) Saul",
@@ -10,6 +11,7 @@
         "answer": "A"
     },
     {
+        "No": 2,
         "question": "Which empire destroyed the First Temple in Jerusalem",
         "options": [
             "(A) Roman Empire",
@@ -19,7 +21,8 @@
         ],
         "answer": "C"
     },
-    {
+    {   
+        "No": 3,
         "question": "Who led the Israelites into the Promised Land after Moses died",
         "options": [
             "(A) Joshua",
@@ -30,6 +33,7 @@
         "answer": "A"
     },
     {
+        "No": 4,
         "question": "Which disciple of Jesus was a tax collector before following Him",
         "options": [
             "(A) Peter",
@@ -40,6 +44,7 @@
         "answer": "C"
     },
     {
+        "No": 5,
         "question": "Who was the father of the twelve tribes of Israel",
         "options": [
             "(A) Isaac",
@@ -50,6 +55,7 @@
         "answer": "C"
     },
     {
+        "No": 6,
         "question": "Which city's walls fell down after the Israelites marched around it for seven days",
         "options": [
             "(A) Jericho",
@@ -60,6 +66,7 @@
         "answer": "A"
     },
     {
+        "No": 7,
         "question": "Who interpreted Pharaoh's dreams in Egypt",
         "options": [
             "(A) Moses",
@@ -70,6 +77,7 @@
         "answer": "C"
     },
     {
+        "No": 8,
         "question": "Which Roman governor sentenced Jesus to death",
         "options": [
             "(A) Herod",
@@ -80,6 +88,7 @@
         "answer": "B"
     },
     {
+        "No": 9,
         "question": "Who was the first man to be created according to the Bible",
         "options": [
             "(A) Abraham",
@@ -90,6 +99,7 @@
         "answer": "D"
     },
     {
+        "No": 10,
         "question": "Which apostle wrote most of the New Testament letters",
         "options": [
             "(A) Paul",
@@ -100,12 +110,13 @@
         "answer": "A"
     },
     {
+        "No": 11,   
         "question": "What is the former name of Paul",
         "options": [
-            "Saul",
-            "Timothy",
-            "Silas",
-            "John"
+            "(A) Saul",
+            "(B) Timothy",
+            "(C) Silas",
+            "(D) John"
         ],
         "answer": "A"
     }

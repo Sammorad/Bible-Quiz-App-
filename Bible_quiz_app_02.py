@@ -26,11 +26,16 @@ def save_quiz(quiz):
 def users_answers(item):
     """Get the user's answer and check if it's correct"""
     answer = input("Answer: ").strip().upper()
-    correct_answer = item["answer"]
-    if answer == correct_answer:
-        print("You are correct!")
+    if answer in ["A", "B", "C", "D"]:
+        correct_answer = item["answer"]
+        if answer == correct_answer:
+            print("You are correct!")
+        else:
+            print(f"Wrong Answer, the correct answer is '{correct_answer}'")
     else:
-        print(f"Wrong Answer, the correct answer is '{correct_answer}'")
+        print("Invalid input, enter A, B, C, or D")
+
+
 def add_question_and_answer():
     """Add a new question and answer to the quiz"""
     question = input("Enter the question: ")
@@ -44,7 +49,40 @@ def add_question_and_answer():
     save_quiz(quiz)
     print("Question added successfully!")
 
-def bible_quiz():
+def modify_question():
+    """Modify a question in the quiz"""
+    quiz = load_quiz()
+    if not quiz:
+        print("No quiz available to modify.")
+        return
+    question_number = int(input("Enter the question number to modify: "))
+    new_question = input("Enter the new question: ")
+    new_answer = input("Enter the new answer: ")
+    quiz[question_number - 1]["question"] = new_question
+    options = []
+    for i in range(4):
+        option = input(f"Enter option {chr(65 + i)}: ")
+        options.append(option)
+    quiz[question_number - 1]["options"] = options
+    quiz[question_number - 1]["answer"] = new_answer
+    save_quiz(quiz)
+    print("Question modified successfully!")
+
+
+def delete_question():
+    """Delete a question from the quiz"""
+    quiz = load_quiz()
+    if not quiz:
+        print("No quiz available to delete.")
+        return
+    question_number = int(input("Enter the question number to delete: "))
+    del quiz[question_number - 1]
+    save_quiz(quiz)
+    print("Question deleted successfully!") 
+
+
+
+def main():
     """Main function to initialize and manage the quiz workflow."""
     print("Are you an admin or a user?")
     print("Enter 'admin' to add a question and answer")
@@ -52,7 +90,19 @@ def bible_quiz():
     print("Enter 'q' to quit")
     action = input("Enter your choice: ").strip().lower()
     if action == "admin":
-        add_question_and_answer()
+        print("Enter 'add' to add a question and answer")
+        print("Enter 'modify' to modify a question")
+        print("Enter 'delete' to delete a question")
+        print("Enter 'q' to quit")
+        admin_action = input("Enter your choice: ").strip().lower()
+        if admin_action == "add":
+            add_question_and_answer()
+        elif admin_action == "modify":
+            modify_question()
+        elif admin_action == "delete":
+            delete_question()
+        elif admin_action == "q":
+            return
     elif action == "user":
         print("Welcome to the Beginners Bible Quiz")
         print("Return answers in form of A, B, C, or D")
@@ -79,4 +129,4 @@ def bible_quiz():
                 print(option)
             users_answers(item)
 
-bible_quiz()
+main()
