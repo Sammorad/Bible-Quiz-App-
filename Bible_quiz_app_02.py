@@ -129,4 +129,3 @@ def main():
                 print(option)
             users_answers(item)
 
-main()
