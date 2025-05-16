@@ -12,14 +12,14 @@
     },
     {
         "No": 2,
-        "question": "Who led the Israelites out of Egypt?",
+        "question": "Who was the father of the twelve tribes of Israel",
         "options": [
-            "A. Joshua ",
-            "B. Moses",
-            "C. Aaron",
-            "D. David"
+            "A. Isaac",
+            "B. Abraham",
+            "C. Jacob",
+            "D. Joseph"
         ],
-        "answer": "B"
+        "answer": "C"
     },
     {
         "No": 5,
@@ -115,6 +115,36 @@
             "B. Elisha",
             "C. Isaiah",
             "D. Jeremiah"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "Which city's walls fell down after the Israelites marched around it for seven days?",
+        "options": [
+            "A. Jericho",
+            "B. Ai",
+            "C. Bethel",
+            "D. Samaria"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "Which city's walls fell down after the Israelites marched around it for seven days?",
+        "options": [
+            "A. Jericho",
+            "B. Ai",
+            "C. Bethel",
+            "D. Samaria"
+        ],
+        "answer": "A"
+    },
+    {
+        "question": "Which city's walls fell down after the Israelites marched around it for seven days?",
+        "options": [
+            "A. Jericho",
+            "B. Ai",
+            "C. Bethel",
+            "D. Samaria"
         ],
         "answer": "A"
     }

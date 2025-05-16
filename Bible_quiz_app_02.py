@@ -22,6 +22,7 @@ def save_quiz(quiz):
     """Write the quiz to the file"""
     with open(FILENAME, "w") as file:
         json.dump(quiz, file, indent=4)
+        return quiz
 
 def users_answers(item):
     """Get the user's answer and check if it's correct"""
@@ -89,10 +90,11 @@ def modify_question():
             for i in range(4):
                 option = input(f"Enter option {chr(65 + i)}: ")
                 options.append(option)
-                quiz[question_number - 1]["options"] = options
-                quiz[question_number - 1]["answer"] = new_answer
-                save_quiz(quiz)
-                print("Question modified successfully!")
+            quiz[question_number - 1]["question"] = new_question
+            quiz[question_number - 1]["options"] = options
+            quiz[question_number - 1]["answer"] = new_answer
+            save_quiz(quiz)
+            print("Question modified successfully!")
         else:
             print(f"Thank you, question {question_number} not modified ")
 
@@ -156,6 +158,7 @@ def main():
             except ValueError:
                 print("Invalid input. Please enter a number.")
                 return
+                
 
         quiz = load_quiz()
         if not quiz:
