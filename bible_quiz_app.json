@@ -147,5 +147,15 @@
             "D. Samaria"
         ],
         "answer": "A"
+    },
+    {
+        "question": "What was the first miracle Jesus performed",
+        "options": [
+            "A. Healing a blind man",
+            "B. Feeding 5,000 people",
+            "C. Turning water into wine",
+            "D. Walking on water"
+        ],
+        "answer": "C"
     }
 ]
