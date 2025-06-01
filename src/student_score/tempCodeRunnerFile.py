@@ -1,0 +1,3 @@
+
+    try:
+        score = float(score)

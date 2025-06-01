@@ -52,7 +52,7 @@ def validate_question_number(question_number, quiz):
                 return question_number
             else:
                 print("Operation cancelled")
-                return None 
+                raise ValueError("Operation cancelled by user")
 
 def update_new_question():
     """Add question to question, options and answer"""
@@ -87,20 +87,17 @@ def modify_question():
         return
     try:
         question_number = int(input("Enter the question number to modify: "))
-        
-    except ValueError:
-        print("Invalid input. Please Enter a valid number")
-    else: 
-        validate_number = validate_question_number( question_number, quiz)
-        if validate_number is not None:
-            new_question = update_new_question()
-            quiz[question_number - 1]["question"] = new_question["question"]
-            quiz[question_number - 1]["options"] = new_question["options"]
-            quiz[question_number - 1]["answer"] = new_question["answer"]
-            save_quiz(quiz)
-            print("Question modified successfully!")
-        else:
-            print(f"Thank you, question {question_number} not modified ")
+        validate_number = validate_question_number(question_number, quiz)
+        new_question = update_new_question()
+        quiz[validate_number - 1]["question"] = new_question["question"]
+        quiz[validate_number - 1]["options"] = new_question["options"]
+        quiz[validate_number - 1]["answer"] = new_question["answer"]
+        save_quiz(quiz)
+        print("Question modified successfully!")
+    except ValueError as e:
+        print(f"Error: {str(e)}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 
 def delete_question():
@@ -111,17 +108,14 @@ def delete_question():
         return
     try:
         question_number = int(input("Enter the question number to delete: "))
-    except ValueError:
-        print("The number you entered is invalid!")
-        return
-    else:
         validate_number = validate_question_number(question_number, quiz)
-        if validate_number is not None:
-            del quiz[validate_number - 1]
-            save_quiz(quiz)
-            print("Question deleted successfully")
-        else:
-            print("Delete Operation Cancelled")
+        del quiz[validate_number - 1]
+        save_quiz(quiz)
+        print("Question deleted successfully")
+    except ValueError as e:
+        print(f"Error: {str(e)}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
     
     
 

@@ -52,17 +52,22 @@ def validate_question_number(question_number, quiz):
                 return question_number
             else:
                 print("Operation cancelled")
-                return None 
+                raise ValueError("Operation cancelled by user")
+            
+def create_options():
+    """Create Options for Objective Answers"""
+    options = []
+    for i in range(4):
+        option = input(f"Enter option {chr(65 + i)}: ")
+        options.append(option)
+    return options 
 
 
 
 def add_question_and_answer():
     """Add a new question and answer to the quiz"""
     question = input("Enter the question: ")
-    options = []
-    for i in range(4):
-        option = input(f"Enter option {chr(65 + i)}: ")
-        options.append(option)
+    options = create_options()
     answer = input("Enter the correct answer (A, B, C, or D): ").strip().upper()
     quiz = load_quiz()
     quiz.append({"question": question, "options": options, "answer": answer})
@@ -77,26 +82,20 @@ def modify_question():
         return
     try:
         question_number = int(input("Enter the question number to modify: "))
-        
-    except ValueError:
-        print("Invalid input. Please Enter a valid number")
-    else: 
-        validate_number = validate_question_number( question_number, quiz)
-        if validate_number is not None:
-            new_question = input("Enter the new question: ")
-            new_answer = input("Enter the new answer: ")
-            quiz[question_number - 1]["question"] = new_question
-            options = []
-            for i in range(4):
-                option = input(f"Enter option {chr(65 + i)}: ")
-                options.append(option)
-            quiz[question_number - 1]["question"] = new_question
-            quiz[question_number - 1]["options"] = options
-            quiz[question_number - 1]["answer"] = new_answer
-            save_quiz(quiz)
-            print("Question modified successfully!")
-        else:
-            print(f"Thank you, question {question_number} not modified ")
+        validate_number = validate_question_number(question_number, quiz)
+        new_question = input("Enter the new question: ")
+        new_answer = input("Enter the new answer: ")
+        quiz[validate_number - 1]["question"] = new_question
+        options = create_options()
+        quiz[validate_number - 1]["question"] = new_question
+        quiz[validate_number - 1]["options"] = options
+        quiz[validate_number - 1]["answer"] = new_answer
+        save_quiz(quiz)
+        print("Question modified successfully!")
+    except ValueError as e:
+        print(f"Error: {str(e)}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 
 def delete_question():
@@ -107,17 +106,14 @@ def delete_question():
         return
     try:
         question_number = int(input("Enter the question number to delete: "))
-    except ValueError:
-        print("The number you entered is invalid!")
-        return
-    else:
         validate_number = validate_question_number(question_number, quiz)
-        if validate_number is not None:
-            del quiz[validate_number - 1]
-            save_quiz(quiz)
-            print("Question deleted successfully")
-        else:
-            print("Delete Operation Cancelled")
+        del quiz[validate_number - 1]
+        save_quiz(quiz)
+        print("Question deleted successfully")
+    except ValueError as e:
+        print(f"Error: {str(e)}")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
     
     
 
